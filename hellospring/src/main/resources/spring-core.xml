@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xmlns="http://www.springframework.org/schema/beans" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd
+
+
+
+
+           http://www.springframework.org/schema/cache
+           http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+    <!-- 加载环境变量及配置文件 -->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+        <property name="ignoreResourceNotFound" value="true"/>
+        <property name="locations">
+            <list>
+                <value>classpath:/environment.properties</value>
+            </list>
+        </property>
+    </bean>
+
+
+    <!-- 配置数据源 -->
+    <!--<bean id="datasource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">-->
+    <bean id="datasource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
+        <property name="name" value="datasource_"/>
+        <property name="filters" value="stat,wall"/>
+        <property name="url" value="${APP_JDBC_URL}"/>
+        <property name="username" value="${APP_JDBC_USERNAME}"/>
+        <property name="password" value="${APP_JDBC_PASSWORD}"/>
+        <property name="maxActive" value="500"/>
+        <property name="initialSize" value="10"/>
+        <property name="maxWait" value="60000"/>
+        <property name="minIdle" value="10"/>
+        <property name="timeBetweenEvictionRunsMillis" value="60000"/>
+        <property name="minEvictableIdleTimeMillis" value="300000"/>
+        <property name="validationQuery" value="SELECT 'x'"/>
+        <property name="testWhileIdle" value="true"/>
+        <property name="testOnBorrow" value="false"/>
+        <property name="testOnReturn" value="false"/>
+    </bean>
+    <!-- 配置 mybatis -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="datasource"/>
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageHelper">
+                    <property name="properties">
+                        <props>
+                            <prop key="dialect">mysql</prop>
+                            <prop key="pageSizeZero">true</prop>
+                        </props>
+                    </property>
+                </bean>
+            </array>
+        </property>
+        <property name="databaseIdProvider">
+            <bean class="org.apache.ibatis.mapping.VendorDatabaseIdProvider">
+                <property name="properties">
+                    <props>
+                        <prop key="MySQL">MySQL</prop>
+                        <prop key="H2">H2</prop>
+                    </props>
+                </property>
+            </bean>
+        </property>
+        <property name="mapperLocations">
+            <list>
+                <value>classpath*:mapper/mapper-*.xml</value>
+            </list>
+        </property>
+        <property name="typeAliasesPackage" value="com.jimu.model" />
+    </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <property name="basePackage" value="com.jimu.dao"/>
+    </bean>
+
+    <!-- 配置数据库事务 -->
+    <bean id="tx_manager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="datasource"/>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="tx_manager" proxy-target-class="true"/>
+</beans>
