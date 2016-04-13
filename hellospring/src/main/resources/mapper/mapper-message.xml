@@ -3,7 +3,12 @@
 <mapper namespace="com.jimu.dao.MessageDao">
     <select id="list" resultType="Message">
         SELECT
-        content as value
-        from rong_message
+        signature_ as value
+        from e_insurance_api_result
+    </select>
+    <select id="listApiResult" resultType="PolicyApiResult">
+        SELECT
+        *
+        from e_insurance_api_result
     </select>
 </mapper>

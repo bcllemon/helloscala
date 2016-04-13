@@ -2,6 +2,7 @@ package com.jimu.controller;
 
 import com.jimu.dao.MessageDao;
 import com.jimu.model.Message;
+import com.jimu.model.PolicyApiResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,5 +25,10 @@ public class JavaApiController {
     @RequestMapping("/list")
     public List<Message> list(){
         return messageDao.list();
+    }
+
+    @RequestMapping("/listApiResult")
+    public List<PolicyApiResult> listApiResult(){
+        return messageDao.listApiResult();
     }
 }

@@ -79,6 +79,7 @@
             </list>
         </property>
         <property name="typeAliasesPackage" value="com.jimu.model" />
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
     </bean>
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>

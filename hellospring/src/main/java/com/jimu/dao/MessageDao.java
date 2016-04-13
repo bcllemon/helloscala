@@ -1,6 +1,7 @@
 package com.jimu.dao;
 
 import com.jimu.model.Message;
+import com.jimu.model.PolicyApiResult;
 
 import java.util.List;
 
@@ -9,4 +10,5 @@ import java.util.List;
  */
 public interface MessageDao {
     List<Message> list();
+    List<PolicyApiResult> listApiResult();
 }
