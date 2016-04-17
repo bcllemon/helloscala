@@ -1,4 +1,4 @@
-package com.jimu.hello
+package com.jimu.hello.model
 
 import scala.beans.BeanProperty
 

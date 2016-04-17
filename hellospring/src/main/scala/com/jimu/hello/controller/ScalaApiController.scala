@@ -1,9 +1,11 @@
-package com.jimu.hello
+package com.jimu.hello.controller
 
 import java.util.concurrent.TimeUnit
 import javax.annotation.Resource
 
 import com.jimu.dao.MessageDao
+import com.jimu.hello.model
+import com.jimu.hello.model.Message
 import com.jimu.model
 import org.springframework.web.bind.annotation.{RequestMapping, RequestMethod, ResponseBody, RestController}
 
