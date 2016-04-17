@@ -16,9 +16,13 @@ class QrCodeController {
     @Resource
     val qrcodeService:QrCodeService = null
 
-    @RequestMapping(Array("/show"))
-    def show(response:HttpServletResponse,url:String):Unit={
+    @RequestMapping(Array("/make"))
+    def make(response:HttpServletResponse,url:String):Unit={
         val op:ServletOutputStream = response.getOutputStream();
         qrcodeService.make(qrcodeService.shortUrl(url),op);
+    }
+    @RequestMapping(Array("/short"))
+    def short(url:String):String = {
+        qrcodeService.shortUrl(url)
     }
 }

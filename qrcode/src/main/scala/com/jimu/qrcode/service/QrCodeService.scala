@@ -10,6 +10,7 @@ import net.glxn.qrgen.javase.QRCode
 import org.apache.commons.io.IOUtils
 import org.springframework.stereotype.Service
 
+import scala.util.control.Breaks._
 /**
   * Created by bcl on 16/4/17.
   */
@@ -17,18 +18,32 @@ import org.springframework.stereotype.Service
 class QrCodeService {
 
     @Resource
-    val shortUrlRepository:ShortUrlRepository = null
+    val shortUrlRepository: ShortUrlRepository = null
 
-    def make(url:String,output:OutputStream):Unit = {
-        val file:File = QRCode.from(url).file()
-        IOUtils.copy(new FileInputStream(file),output)
+    def make(url: String, output: OutputStream): Unit = {
+        val file: File = QRCode.from(url).file()
+        IOUtils.copy(new FileInputStream(file), output)
     }
-    def shortUrl(url:String):String = {
+
+    def shortUrl(url: String): String = {
+        val urlList = shortUrlRepository.findUrl(url)
+        if (!urlList.isEmpty()) {
+            return urlList.get(0).shortUrl
+        }
         val shortUrl = ShortUrlUtil.ShortText(url)
-        val shortUrlBean = new ShortUrl()
-        shortUrlBean.oriUrl = url
-        shortUrlBean.shortUrl = shortUrl(0)
-        shortUrlRepository.save(shortUrlBean)
-        shortUrl(0)
+        var i: Int = 0
+        breakable{
+            while (i < shortUrl.size) {
+                if (shortUrlRepository.findShortUrl(shortUrl(0)).isEmpty()) {
+                    val shortUrlBean = new ShortUrl()
+                    shortUrlBean.oriUrl = url
+                    shortUrlBean.shortUrl = shortUrl(i)
+                    shortUrlRepository.save(shortUrlBean)
+                    break
+                }
+                i += 1
+            }
+        }
+        shortUrl(i)
     }
 }
