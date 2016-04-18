@@ -19,6 +19,8 @@ class UrlController {
 
     @RequestMapping(Array("/{shortUrl}"))
     def redirect(@PathVariable shortUrl: String): String = {
-        return "redirect:" + qrcodeService.getUrl(shortUrl)
+        val url:String = qrcodeService.getUrl(shortUrl)
+        qrcodeService.viewUrl(url)
+        return "redirect:" + url
     }
 }

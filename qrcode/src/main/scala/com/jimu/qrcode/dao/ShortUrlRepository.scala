@@ -1,6 +1,6 @@
 package com.jimu.qrcode.dao
 
-import com.jimu.qrcode.model.ShortUrl
+import com.jimu.qrcode.model.{ShortUrl, UrlView}
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.mongodb.core.MongoTemplate
 import org.springframework.data.mongodb.core.query.{Criteria, Query}
@@ -22,5 +22,8 @@ class ShortUrlRepository {
     }
     def findShortUrl(shortUrl:String):List[ShortUrl] = {
         mongoTemplate.find(Query.query(Criteria.where("shortUrl").is(shortUrl)),classOf[ShortUrl])
+    }
+    def viewUrl(urlView:UrlView):Unit = {
+        mongoTemplate.save(urlView)
     }
 }

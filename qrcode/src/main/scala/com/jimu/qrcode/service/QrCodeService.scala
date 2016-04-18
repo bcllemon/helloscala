@@ -1,10 +1,11 @@
 package com.jimu.qrcode.service
 
 import java.io.{File, FileInputStream, OutputStream}
+import java.util.Date
 import javax.annotation.Resource
 
 import com.jimu.qrcode.dao.ShortUrlRepository
-import com.jimu.qrcode.model.ShortUrl
+import com.jimu.qrcode.model.{ShortUrl, UrlView}
 import com.jimu.util.ShortUrlUtil
 import net.glxn.qrgen.javase.QRCode
 import org.apache.commons.io.IOUtils
@@ -52,6 +53,12 @@ class QrCodeService {
             return ""
         }
         return urlList.get(0).oriUrl
+    }
+    def viewUrl(url: String):Unit ={
+        val urlView:UrlView = new  UrlView()
+        urlView.oriUrl = url
+        urlView.viewTime = new Date()
+        shortUrlRepository.viewUrl(urlView)
     }
 
 }
