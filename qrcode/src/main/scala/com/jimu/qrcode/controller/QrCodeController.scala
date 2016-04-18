@@ -25,4 +25,6 @@ class QrCodeController {
     def short(url:String):String = {
         qrcodeService.shortUrl(url)
     }
+
+
 }

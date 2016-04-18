@@ -34,7 +34,7 @@ class QrCodeService {
         var i: Int = 0
         breakable{
             while (i < shortUrl.size) {
-                if (shortUrlRepository.findShortUrl(shortUrl(0)).isEmpty()) {
+                if (shortUrlRepository.findShortUrl(shortUrl(i)).isEmpty()) {
                     val shortUrlBean = new ShortUrl()
                     shortUrlBean.oriUrl = url
                     shortUrlBean.shortUrl = shortUrl(i)
@@ -46,4 +46,12 @@ class QrCodeService {
         }
         shortUrl(i)
     }
+    def getUrl(shortUrl: String): String ={
+        val urlList = shortUrlRepository.findShortUrl(shortUrl)
+        if(urlList.isEmpty()){
+            return ""
+        }
+        return urlList.get(0).oriUrl
+    }
+
 }
