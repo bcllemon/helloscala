@@ -11,4 +11,5 @@ import java.util.List;
 public interface MessageDao {
     List<Message> list();
     List<PolicyApiResult> listApiResult();
+    Integer insert(PolicyApiResult policyApiResult);
 }

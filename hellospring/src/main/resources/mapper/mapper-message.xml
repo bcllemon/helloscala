@@ -11,4 +11,8 @@
         *
         from e_insurance_api_result
     </select>
+    <insert id="insert" parameterType="PolicyApiResult">
+        insert into e_insurance_api_result (signature_)
+        values (#{signature})
+    </insert>
 </mapper>
