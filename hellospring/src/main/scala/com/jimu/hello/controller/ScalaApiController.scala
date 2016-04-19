@@ -4,9 +4,7 @@ import java.util.concurrent.TimeUnit
 import javax.annotation.Resource
 
 import com.jimu.dao.MessageDao
-import com.jimu.hello.model
 import com.jimu.hello.model.Message
-import com.jimu.model
 import org.springframework.web.bind.annotation.{RequestMapping, RequestMethod, ResponseBody, RestController}
 
 /**
@@ -27,16 +25,16 @@ class ScalaApiController {
   }
   @RequestMapping(value = Array("/hello2"), method = Array(RequestMethod.GET))
   @ResponseBody
-  def hello2(): model.Message = {
+  def hello2():com.jimu.model.Message = {
     TimeUnit.SECONDS.sleep(6)
-    val message = new model.Message()
+    val message = new com.jimu.model.Message()
     message.value = "Hello, Scala for Spring!"
     message.my = "222"
     message
   }
 
   @RequestMapping(Array("/list"))
-  def list: java.util.List[model.Message] = {
+  def list: java.util.List[com.jimu.model.Message] = {
     return messageDao.list
   }
 }

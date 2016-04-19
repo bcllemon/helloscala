@@ -1,0 +1,30 @@
+spring:
+    datasource:
+        name: sandbox_insurance
+        url: jdbc:mysql://172.19.1.102:9905/sandbox_insurance?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false&rewriteBatchedStatements=true
+        username: sandbox
+        password: TxHT29VMfn4ZJ6VU
+        # 使用druid数据源
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        filters: stat
+        maxActive: 20
+        initialSize: 1
+        maxWait: 60000
+        minIdle: 1
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 'x'
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxOpenPreparedStatements: 20
+logging:
+  level:
+    com:
+      jimu: TRACE
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  typeAliasesPackage: com.jimu.model
+  config-location: classpath:mybatis-config.xml

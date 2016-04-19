@@ -4,4 +4,14 @@
     <settings>
         <setting name="mapUnderscoreToCamelCase" value="true" />
     </settings>
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageHelper">
+            <property name="dialect" value="mysql"/>
+            <property name="pageSizeZero" value="true"/>
+        </plugin>
+    </plugins>
+    <databaseIdProvider type="org.apache.ibatis.mapping.VendorDatabaseIdProvider">
+        <property name="MySQL" value="MySQL"/>
+        <property name="H2" value="H2"/>
+    </databaseIdProvider>
 </configuration>

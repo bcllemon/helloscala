@@ -1,5 +1,6 @@
 package com.jimu.controller;
 
+import com.github.pagehelper.PageHelper;
 import com.jimu.dao.MessageDao;
 import com.jimu.model.Message;
 import com.jimu.model.PolicyApiResult;
@@ -29,6 +30,7 @@ public class JavaApiController {
 
     @RequestMapping("/listApiResult")
     public List<PolicyApiResult> listApiResult(){
+        PageHelper.startPage(1,10);
         return messageDao.listApiResult();
     }
 }
