@@ -47,4 +47,9 @@ public class JavaApiController {
         }
         return 0;
     }
+    @RequestMapping("/testScala")
+    public com.jimu.hello.model.Message testScala(){
+        com.jimu.hello.model.Message message = new com.jimu.hello.model.Message();
+        return message;
+    }
 }
