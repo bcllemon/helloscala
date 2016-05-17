@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Created by bcl on 16/5/9.
  */
-@SpringBootApplication
+
 public class Application implements CommandLineRunner {
     @Autowired
     private MongoTemplate mongoTemplate;
