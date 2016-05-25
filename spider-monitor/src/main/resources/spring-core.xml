@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xmlns="http://www.springframework.org/schema/beans" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd
+
+
+
+
+           http://www.springframework.org/schema/cache
+           http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <context:component-scan base-package="com.jimubox.insurance.*.dao,
+                                          com.jimubox.insurance.*.service,
+                                          com.jimubox.insuranceapi.*.service"/>
+
+    <!-- 加载环境变量及配置文件 -->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+        <property name="ignoreResourceNotFound" value="true"/>
+        <property name="locations">
+            <list>
+                <value>classpath:/environment.properties</value>
+                <value>file:${JIMUBOX_ENVIRONMENTS_FILE}</value>
+                <!--suppress SpringPlaceholdersInspection -->
+            </list>
+        </property>
+    </bean>
+
+    <!-- 用于获取配置文件中的属性 -->
+    <bean id="scene" class="java.util.concurrent.ConcurrentHashMap">
+        <constructor-arg index="0">
+            <map>
+                <entry key="PROJECT_MERCHANTID" value="${PROJECT_MERCHANTID}" value-type="java.lang.String"/>
+                <entry key="PROJECT_KEY" value="${PROJECT_KEY}" value-type="java.lang.String"/>
+                <entry key="BLACKLIST_URL" value="${BLACKLIST_URL}" value-type="java.lang.String"/>
+                <entry key="BLACKLIST_MERCHANT_ID" value="${BLACKLIST_MERCHANT_ID}" value-type="java.lang.String"/>
+                <entry key="BLACKLIST_MERCHANT_KEY" value="${BLACKLIST_MERCHANT_KEY}" value-type="java.lang.String"/>
+                <entry key="IN_SYSTEM_URL" value="${IN_SYSTEM_URL}" value-type="java.lang.String"/>
+                <entry key="SMS_URL" value="${SMS_URL}" value-type="java.lang.String"/>
+                <entry key="SMS_NAME" value="${SMS_NAME}" value-type="java.lang.String"/>
+                <entry key="SMS_KEY" value="${SMS_KEY}" value-type="java.lang.String"/>
+                <entry key="TEST_MODE" value="${TEST_MODE}" value-type="java.lang.String"/>
+                <entry key="CODE_TEST" value="${CODE_TEST}" value-type="java.lang.String"/>
+                <entry key="MOBILE_CODE_VALID_SECOND" value="${MOBILE_CODE_VALID_SECOND}" value-type="java.lang.String"/>
+                <entry key="POLICY_PLAN_CONFIRM_URL" value="${POLICY_PLAN_CONFIRM_URL}" value-type="java.lang.String"/>
+                <entry key="PAY_RESULT_URL" value="${PAY_RESULT_URL}" value-type="java.lang.String"/>
+                <entry key="POLICY_NOTIFY_URL" value="${POLICY_NOTIFY_URL}" value-type="java.lang.String"/>
+                <entry key="PAY_SUCCESS_URL" value="${PAY_SUCCESS_URL}" value-type="java.lang.String"/>
+                <entry key="CONTRACT_FTP_URL" value="${CONTRACT_FTP_URL}" value-type="java.lang.String"/>
+                <entry key="CONTRACT_FTP_USERNAME" value="${CONTRACT_FTP_USERNAME}" value-type="java.lang.String"/>
+                <entry key="CONTRACT_FTP_PASSWORD" value="${CONTRACT_FTP_PASSWORD}" value-type="java.lang.String"/>
+                <entry key="PICC_SPIDER_URI" value="${picc_spider_uri}" value-type="java.lang.String"/>
+                <entry key="SINOSIG_SPIDER_URI" value="${sinosig_spider_uri}" value-type="java.lang.String"/>
+                <entry key="CPIC_SPIDER_URI" value="${cpic_spider_uri}" value-type="java.lang.String"/>
+                <entry key="CPIC_SPIDER_IN_URI" value="${cpic_spider_in_uri}" value-type="java.lang.String"/>
+                <entry key="ENGINE_URL" value="${ENGINE_URL}" value-type="java.lang.String"/>
+                <entry key="ENGINE_EXT" value="${ENGINE_EXT}" value-type="java.lang.String"/>
+                <entry key="ENGINE_ACTION" value="${ENGINE_ACTION}" value-type="java.lang.String"/>
+                <entry key="ENGINE_SYSTEM" value="${ENGINE_SYSTEM}" value-type="java.lang.String"/>
+                <entry key="ENGINE_NAME" value="${ENGINE_NAME}" value-type="java.lang.String"/>
+                <entry key="ENGINE_PWD" value="${ENGINE_PWD}" value-type="java.lang.String"/>
+                <entry key="PAY_API_URL" value="${PAY_API_URL}" value-type="java.lang.String"/>
+                <entry key="PUBLIC_EMAIL" value="${PUBLIC_EMAIL}" value-type="java.lang.String"/>
+                <entry key="PASSPORT_URL" value="${PASSPORT_URL}" value-type="java.lang.String"/>
+                <entry key="PASSPORT_KEY" value="${PASSPORT_KEY}" value-type="java.lang.String"/>
+                <entry key="PASSPORT_IDENTIFIER" value="${PASSPORT_IDENTIFIER}" value-type="java.lang.String"/>
+                <entry key="PASSPORT_PRODUCT" value="${PASSPORT_PRODUCT}" value-type="java.lang.String"/>
+                <entry key="PASSPORT_PRODUCT" value="${PASSPORT_PRODUCT}" value-type="java.lang.String"/>
+                <entry key="BIHU_URI" value="${bihu_uri}" value-type="java.lang.String"/>
+                <entry key="BIHU_AGENT" value="${bihu_agent}" value-type="java.lang.String"/>
+                <entry key="BIHU_SECCODE" value="${bihu_seccode}" value-type="java.lang.String"/>
+                <entry key="BIHU_ENABLE" value="${bihu_enable}" value-type="java.lang.Boolean"/>
+                <entry key="ENABLE_CALC_CACHE" value="${enable_calc_cache}" value-type="java.lang.Boolean"/>
+                <entry key="CALC_CACHE_TIMEOUT" value="${calc_cache_timeout}" value-type="java.lang.Long"/>
+                <entry key="CALC_CACHE_TIMEOUT" value="${calc_cache_timeout}" value-type="java.lang.Long"/>
+                <entry key="ACCESS_KEY" value="${ACCESS_KEY}" value-type="java.lang.String"/>
+                <entry key="SECRET_KEY" value="${SECRET_KEY}" value-type="java.lang.String"/>
+                <entry key="DOMAIN" value="${DOMAIN}" value-type="java.lang.String"/>
+                <entry key="BUCKET" value="${BUCKET}" value-type="java.lang.String"/>
+                <entry key="ICR_ENGINE_URL" value="${ICR_ENGINE_URL}" value-type="java.lang.String"/>
+            </map>
+        </constructor-arg>
+    </bean>
+
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxTotal" value="${REDIS_MAX_ACTIVE}"/>
+        <property name="maxIdle" value="${REDIS_MAX_IDLE}"/>
+        <property name="maxWaitMillis" value="${REDIS_MAX_WAIT_MILLSECONDS}"/>
+        <property name="testOnBorrow" value="${REDIS_TEST_ON_BORROW}"/>
+    </bean>
+
+    <!-- redis连接配置，依次为主机ip，端口，是否使用池，(usePool=true时)redis的池配置 -->
+    <bean id="jedisFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+        <property name="hostName" value="${REDIS_SERVER_ADDR}"/>
+        <property name="port" value="${REDIS_SERVER_PORT}"/>
+        <property name="usePool" value="true"/>
+        <property name="poolConfig" ref="jedisPoolConfig"/>
+    </bean>
+
+
+    <!-- redis模板配置 -->
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
+        <property name="connectionFactory" ref="jedisFactory"/>
+        <property name="defaultSerializer">
+            <bean class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
+        </property>
+    </bean>
+    <aop:aspectj-autoproxy/>
+</beans>

@@ -1,0 +1,198 @@
+[
+    [
+        {
+            "kindCode": 2,
+            "kindName": "机动车损失保险",
+            "kindNameShort": "车损险",
+            "amount": 1,
+            "sumPrm": 0,
+            "deductableFlag": 1
+        },
+        {
+            "kindCode": 4,
+            "kindName": "第三者责任保险",
+            "kindNameShort": "三者险",
+            "amount": 300000,
+            "sumPrm": 0,
+            "deductableFlag": 1
+        }
+    ],
+    [
+        {
+            "kindCode": 2,
+            "kindName": "机动车损失保险",
+            "kindNameShort": "车损险",
+            "amount": 1,
+            "sumPrm": 0,
+            "deductableFlag": 1
+        },
+        {
+            "kindCode": 4,
+            "kindName": "第三者责任保险",
+            "kindNameShort": "三者险",
+            "amount": 500000,
+            "sumPrm": 0,
+            "deductableFlag": 1
+        },
+        {
+            "kindCode": 6,
+            "kindName": "盗抢险",
+            "kindNameShort": "盗抢险",
+            "amount": 1,
+            "sumPrm": 0,
+            "deductableFlag": 1
+        }
+    ],
+    [
+        {
+            "kindCode": 2,
+            "kindName": "机动车损失保险",
+            "kindNameShort": "车损险",
+            "amount": 1,
+            "sumPrm": 0,
+            "deductableFlag": 1
+        },
+        {
+            "kindCode": 4,
+            "kindName": "第三者责任保险",
+            "kindNameShort": "三者险",
+            "amount": 500000,
+            "sumPrm": 0,
+            "deductableFlag": 1
+        },
+        {
+            "kindCode": 6,
+            "kindName": "盗抢险",
+            "kindNameShort": "盗抢险",
+            "amount": 1,
+            "sumPrm": 0,
+            "deductableFlag": 1
+        },
+        {
+            "kindCode": 5,
+            "kindName": "车身划痕损失险",
+            "kindNameShort": "划痕险",
+            "amount": 2000,
+            "sumPrm": 0,
+            "deductableFlag": 1
+        }
+    ],
+    [
+        {
+            "kindCode": 2,
+            "kindName": "机动车损失保险",
+            "kindNameShort": "车损险",
+            "amount": 1,
+            "sumPrm": 0,
+            "deductableFlag": 1
+        },
+        {
+            "kindCode": 4,
+            "kindName": "第三者责任保险",
+            "kindNameShort": "三者险",
+            "amount": 500000,
+            "sumPrm": 0,
+            "deductableFlag": 1
+        },
+        {
+            "kindCode": 6,
+            "kindName": "盗抢险",
+            "kindNameShort": "盗抢险",
+            "amount": 1,
+            "sumPrm": 0,
+            "deductableFlag": 1
+        },
+        {
+            "kindCode": 5,
+            "kindName": "车身划痕损失险",
+            "kindNameShort": "划痕险",
+            "amount": 2000,
+            "sumPrm": 0,
+            "deductableFlag": 1
+        },
+        {
+            "kindCode": 3,
+            "kindName": "火灾、爆炸、自燃损失险",
+            "kindNameShort": "自燃险",
+            "amount": 1,
+            "sumPrm": 0,
+            "deductableFlag": 0
+        }
+    ],
+    [
+        {
+            "kindCode": 2,
+            "kindName": "机动车损失保险",
+            "kindNameShort": "车损险",
+            "amount": 1,
+            "sumPrm": 0,
+            "deductableFlag": 1
+        },
+        {
+            "kindCode": 4,
+            "kindName": "第三者责任保险",
+            "kindNameShort": "三者险",
+            "amount": 1000000,
+            "sumPrm": 0,
+            "deductableFlag": 1
+        },
+        {
+            "kindCode": 5,
+            "kindName": "车身划痕损失险",
+            "kindNameShort": "划痕险",
+            "amount": 2000,
+            "sumPrm": 0,
+            "deductableFlag": 1
+        },
+        {
+            "kindCode": 6,
+            "kindName": "盗抢险",
+            "kindNameShort": "盗抢险",
+            "amount": 1,
+            "sumPrm": 0,
+            "deductableFlag": 1
+        },
+        {
+            "kindCode": 8,
+            "kindName": "车上人员责任保险(驾驶人)",
+            "kindNameShort": "司机险",
+            "amount": 10000,
+            "sumPrm": 0,
+            "deductableFlag": 1
+        },
+        {
+            "kindCode": 9,
+            "kindName": "车上人员责任保险(乘客)",
+            "kindNameShort": "乘客险",
+            "amount": 10000,
+            "sumPrm": 0,
+            "deductableFlag": 1
+        },
+        {
+            "kindCode": 1,
+            "kindName": "玻璃单独破碎险",
+            "kindNameShort": "玻璃险",
+            "amount": 1,
+            "sumPrm": 0,
+            "deductableFlag": 0
+        },
+        {
+            "kindCode": 3,
+            "kindName": "火灾、爆炸、自燃损失险",
+            "kindNameShort": "自燃险",
+            "amount": 1,
+            "sumPrm": 0,
+            "deductableFlag": 0
+        },
+        {
+            "kindCode": 7,
+            "kindName": "发动机特别损失险",
+            "kindNameShort": "涉水险",
+            "amount": 1,
+            "sumPrm": 0,
+            "deductableFlag": 0
+        }
+    ]
+]
+
+

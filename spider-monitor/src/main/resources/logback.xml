@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+    <property name="log_dir" value="/Users/bcl/temp/log"/>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%.-1level] %message @ %logger %n</pattern>
+            <!--<pattern>%highlight([%.-1level][%d{yyyy-MM-dd HH:mm:ss.SSS}] %msg) %black(@ %logger) %n</pattern> -->
+        </encoder>
+    </appender>
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${log_dir}/insurance-log.log</file>
+        <append>true</append>
+        <!-- 最常用的滚动策略，它根据时间来制定滚动策略.既负责滚动也负责出发滚动 -->
+        <encoder>
+            <pattern>[%.-1level] %message @ %logger %n</pattern>
+        </encoder>
+    </appender>
+    <root level="info">
+        <appender-ref ref="console"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+</configuration>

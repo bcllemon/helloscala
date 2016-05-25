@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+    <localRepository>/Users/bcl/Workspaces/java/Repository</localRepository>
+
+    <!--<mirrors>-->
+    <!--<mirror>-->
+    <!--<id>nexus-osc</id>-->
+    <!--<mirrorOf>central</mirrorOf>-->
+    <!--<name>nexus osc</name>-->
+    <!--<url>http://maven.oschina.net/content/groups/public/</url>-->
+    <!--</mirror>-->
+    <!--<mirror>-->
+    <!--<id>nexus-osc-thirdparty</id>-->
+    <!--<mirrorOf>thirdparty</mirrorOf>-->
+    <!--<name>nexus osc thirdparty</name>-->
+    <!--<url>http://maven.oschina.net/content/repositories/thirdparty/</url>-->
+    <!--</mirror>-->
+    <!--</mirrors>-->
+
+    <profiles>
+        <profile>
+            <id>ooknight</id>
+            <repositories>
+                <!--<repository>-->
+                    <!--<id>jimubox</id>-->
+                    <!--<name>JiMuBox Maven Repository</name>-->
+                    <!--<url>http://office.jimubox.com:8080/nexus/content/groups/public/</url>-->
+                    <!--<layout>default</layout>-->
+                <!--</repository>-->
+                <!--<repository>-->
+                    <!--<id>jimubox</id>-->
+                    <!--<name>JiMuBox Maven Repository</name>-->
+                    <!--<url>http://192.168.3.100:8080/nexus/content/groups/public/</url>-->
+                    <!--<layout>default</layout>-->
+                <!--</repository>-->
+               
+                <repository>
+                    <id>aliyun</id>
+                    <name>aliyun</name>
+                    <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+                    <layout>default</layout>
+                </repository>
+                <repository>
+                    <id>central</id>
+                    <name>Maven Plugin Repository</name>
+                    <url>http://repo1.maven.org/maven2</url>
+                    <layout>default</layout>
+                </repository>
+                <!--<repository>-->
+                    <!--<id>nexus-osc</id>-->
+                    <!--<name>nexus osc</name>-->
+                    <!--<url>http://maven.oschina.net/content/groups/public/</url>-->
+                    <!--<layout>default</layout>-->
+                <!--</repository>-->
+                <repository>
+                    <id>ooknight-git-repository</id>
+                    <name>ooknight git repository</name>
+                    <url>http://git.oschina.net/ooknight/repository/raw/master</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+               
+                <!-- <repository>
+                  <id>mvn-repository</id>
+                  <name>Maven Repository</name>
+                  <url>http://www.mvnrepository.com/artifact/</url>
+                </repository> -->
+                <!-- <repository>
+                  <id>jboss</id>
+                  <name>JBoss Maven Repository</name>
+                  <url>http://repository.jboss.org/nexus/content/repositories/central</url>
+                </repository> -->
+                <!-- <repository>
+                  <id>maven</id>
+                  <name>Slowly office site</name>
+                  <url>http://search.maven.org</url>
+                </repository> -->
+                <!-- <repository>
+                  <id>alibabatech</id>
+                  <name>alibabatech site</name>
+                  <url>http://code.alibabatech.com/mvn/releases</url>
+                </repository> -->
+                <!-- <repository>
+                  <id>codehaus</id>
+                  <name>codehaus site</name>
+                  <url>http://repository.codehaus.org/</url>
+                </repository> -->
+                <!-- <repository>
+                  <id>doveltech</id>
+                  <name>doveltech site</name>
+                  <url>http://www.doveltech.com/maven/</url>
+                </repository> -->
+                <!-- <repository>
+                   <id>OpenSymphony mirror repository</id>
+                   <name>OpenSymphony mirror repository</name>
+                   <url>http://oswokflow-repository.googlecode.com/svn/deploy</url>
+                 </repository> -->
+            </repositories>
+            <pluginRepositories>
+                <!-- <pluginRepository>
+                    <id>nexus</id>
+                    <name>local private nexus</name>
+                    <url>http://maven.oschina.net/content/groups/public/</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </pluginRepository> -->
+                <pluginRepository>
+                    <id>central</id>
+                    <name>Maven Plugin Repository</name>
+                    <url>http://repo1.maven.org/maven2</url>
+                    <layout>default</layout>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                    <releases>
+                        <updatePolicy>never</updatePolicy>
+                    </releases>
+                </pluginRepository>
+            </pluginRepositories>
+            <activation>
+                <jdk>1.8</jdk>
+            </activation>
+            <properties>
+                <maven.compiler.source>1.8</maven.compiler.source>
+                <maven.compiler.target>1.8</maven.compiler.target>
+                <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
+            </properties>
+        </profile>
+    </profiles>
+
+    <activeProfiles>
+        <activeProfile>ooknight</activeProfile>
+    </activeProfiles>
+
+</settings>
