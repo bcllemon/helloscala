@@ -8,9 +8,8 @@ import scala.util.Random
   * Created by bcl on 16/5/24.
   */
 object MonteCarlo extends App {
-    val conf = new SparkConf().setAppName("MonteCarlo")
+    val conf = new SparkConf().setAppName("MonteCarlo").setJars(List("/Users/bcl/Workspaces/scala/helloscala/hellospark/target/hellospark-1.0-SNAPSHOT.jar"))
     val sc = new SparkContext(conf)
-
     val total = 100 * 10000
     val local_collection = new Array[Int](total)
     for (i <- 1 until total) {
