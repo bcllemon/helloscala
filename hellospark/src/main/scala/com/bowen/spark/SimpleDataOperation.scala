@@ -23,5 +23,4 @@ object SimpleDataOperation extends App{
     df.printSchema()
     val countsByCode = df.groupBy("code").count()
     countsByCode.show()
-    countsByCode.write.format("json").saveAsTable("result")
 }
